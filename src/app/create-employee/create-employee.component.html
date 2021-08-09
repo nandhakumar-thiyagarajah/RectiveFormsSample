@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="inner-container">
+        <div class="header_container">
+            <h1>EMPLOYEE RECORD</h1>
+        </div>
+
+        <div style="display: flex;flex-direction: row;justify-content: space-around;">
+            <div style="width:25%;justify-content: center;">
+                <form [formGroup]=employeeForm  class="formContainer" >
+                    <mat-form-field appearance="fill">
+                        <mat-label>Employee Id</mat-label>
+                        <input matInput formControlName="empId">
+                    </mat-form-field><br>
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Employee Name</mat-label>
+                        <input matInput formControlName="empName">
+                    </mat-form-field><br>
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Position</mat-label>
+                        <input matInput formControlName="empPosition">
+                    </mat-form-field><br>
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Salary</mat-label>
+                        <input matInput formControlName="empSalary">
+                    </mat-form-field><br>
+
+                    <button mat-raised-button color="primary" (click)="createList()">CREATE</button>
+                </form>
+
+            </div>
+
+            <div style="width: 70%;">
+                <table  *ngIf="emplyeeList.length > 0">
+                    <tr>
+                        <th>Employee Id</th>
+                        <th>Employee Name</th>
+                        <th>Employee Position</th>
+                        <th>Salary</th>
+                      </tr>
+                    <tr *ngFor="let employee of emplyeeList">
+                        <td>{{employee?.empId}}</td>
+                        <td>{{employee?.empName}}</td>
+                        <td>{{employee?.empPosition}}</td>
+                        <td>{{employee?.empSalary}}</td>
+                    </tr>
+                </table>
+
+                <div *ngIf="emplyeeList.length === 0" style="display: flex;flex-direction: column;width: 75%;align-items: center;justify-content: center;">
+                    <div>
+                        <img src="../../assets/noRecordFound.png" style="height: 200px;width: auto;"/>
+                    </div>
+                    
+                    <p style="margin-top: 10px;">No Record Found</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
